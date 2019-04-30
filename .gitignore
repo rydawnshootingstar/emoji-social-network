@@ -1,0 +1,8 @@
+node_modules/
+public/devlog/
+sketch/
+.env.development
+.DS_Store
+package-lock.json
+public/dist/
+api/post/deleteUserPost.js
