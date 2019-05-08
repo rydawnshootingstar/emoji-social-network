@@ -1,0 +1,25 @@
+@primaryColor: #2fa4e7;
+@positiveColor: #73a839;
+@infoColor: #033c73;
+@warningColor: #dd5600;
+@negativeColor: #c71c22;
+
+@textcolor: #495057;
+@headerFont: @fontName;
+@headerLineHeight: 1.2;
+
+@inputColor: #555;
+
+@disabledTextColor: #ddd;
+@invertedDisabledTextColor: #ccc;
+
+@positiveTextColor: #468847;
+@infoTextColor: #3a87ad;
+@warningTextColor: #c09853;
+@warningBorderColor: darken(spin(@warningBackgroundColor, -10), 3%);
+@negativeTextColor: #b94a48;
+@negativeBorderColor: darken(spin(@negativeBackgroundColor, -10), 3%);
+
+@pageFont: "Helvetica Neue", Arial, Helvetica, sans-serif;
+@headerFont: "Helvetica Neue", Arial, Helvetica, sans-serif;
+@importGoogleFonts: false;

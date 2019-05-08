@@ -26,7 +26,7 @@ module.exports = (env)=> {
     },
     resolve: {
         alias: {
-           '../../theme.config$': path.join(__dirname, 'semantic-theme/theme.config')  
+           '../../theme.config$': path.join(__dirname, 'semantic-ui-theme/theme.config')  
         }
      },
     module: {

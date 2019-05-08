@@ -1,0 +1,10 @@
+@primaryColor: #593196;
+@positiveColor: #13b955;
+@infoColor: #009cdc;
+@warningColor: #efa31d;
+@negativeColor: #fc3939;
+
+@borderRadius: 0;
+@textColor: #444;
+@linkHoverColor: @primaryColor;
+@emSize: 12.25px;
