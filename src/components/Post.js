@@ -13,7 +13,7 @@ import firebase from '../firebase/firebase';
 */
 
 const webURL = 'localhost';
-const PORT = process.env.PORT || 8080;
+const PORT = '8080';
 
 class Post extends React.Component{
 
@@ -22,7 +22,7 @@ class Post extends React.Component{
     }
 
     state={
-        mouseInside:false,
+        mouseInside: false,
         modalOpen: false,
         modalPostID: ''
     }
@@ -50,7 +50,7 @@ class Post extends React.Component{
         this.closeModal();
     }
 
-    mouseEnter=()=>{
+    mouseEnter= ()=>{
         this.setState({mouseInside:true});
     }
 
@@ -107,9 +107,7 @@ class Post extends React.Component{
                         </span>
                     </Item.Extra>
                 </Item.Content>
-            
             </Item>
-           
         );
     };
 }

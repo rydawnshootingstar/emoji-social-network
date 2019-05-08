@@ -15,7 +15,7 @@ import {setUrlValue, clearUrlValue} from '../actions/index';
 */
 
 const webURL = 'localhost';
-const PORT = process.env.PORT || 8080;
+const PORT =  '8080';
 
 
 class PostForm extends React.Component{

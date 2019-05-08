@@ -7,7 +7,7 @@
     "build:dev": "webpack && node -r dotenv/config . dotenv_config_path=.env.development",
     "build:dammit": "webpack -p --env development && nodemon .",
     "dev-server": "webpack-dev-server",
-    "build:prod": "webpack -p --env production",
+    "build:prod": "webpack -p --env production && node -r dotenv/config . dotenv_config_path=.env.development",
     "build-babel": "babel ./src/index.js --out-file=public/scripts/app.js --presets=react --watch",
     "start": "node .",
     "heroku-postbuild": "npm run build:prod"
