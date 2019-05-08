@@ -2,6 +2,9 @@
   "name": "react-social-network",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "10.14.1"
+  },
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack && node -r dotenv/config . dotenv_config_path=.env.development",
