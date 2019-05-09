@@ -42,7 +42,7 @@ class App extends React.Component{
                     }}
                 >
                     😱
-                    <br />
+                <br />    
                 {/* Nav Bar */}
                     <BreadCrumbNav />
                 </Header>
