@@ -28,10 +28,8 @@ class Login extends React.Component {
             .auth()
             .signInWithEmailAndPassword(email, password)
             .then((user)=> {
-                console.log(user);
                 this.setState({loading: false});
             }).catch((err)=>{
-                console.error(err);
                 this.setState({errors: this.state.errors.concat(err), loading: false});
             })
         }
@@ -51,11 +49,13 @@ class Login extends React.Component {
             verticalAlign="middle"
             className="app"
             >
+        {/* Header */}           
             <Grid.Column style={{maxWidth: '450px', marginTop:'5%'}}>
                 <Header as="h1" icon color="black" textAlign="center">
-                <Icon name="code branch" color="black" />
-                Login to React Forever
+                <p style={{fontSize: '100px'}}>🤣</p>
+                Login
                 </Header>
+        {/* Main Form */}   
                 <Form onSubmit={this.handleSubmit} size="large">
                     <Segment stacked>
                         <Form.Input fluid name="email" 
@@ -83,14 +83,12 @@ class Login extends React.Component {
                         >Submit</Button>
                     </Segment>
                 </Form>
+        {/* Errors */}   
                 {
-                    errors && errors.map((err,index)=> <Message  className='error' key={index}><h3>Error:</h3> {err}</Message>)
+                    errors && errors.map((err,index)=> <Message  className='error' key={index}><h3>Error:</h3> {err.message}</Message>)
                 }
-
                 <Message>Don't have an account? <Link to="/register">Sign Up</Link></Message>
-
             </Grid.Column>
-            
             </Grid>
         )
     }

@@ -5,6 +5,7 @@ import Axios from 'axios';
 import { connect } from 'react-redux';
 import PostModal from './PostModal';
 import firebase from '../firebase/firebase';
+import moment from 'moment';
 
 /*
     - this.props.post holds all post information
@@ -13,9 +14,8 @@ import firebase from '../firebase/firebase';
 */
 
 const webURL = 'https://emoji-social-network.herokuapp.com';
+//const webURL = 'http://localhost:8080';
 //const PORT = '8080';
-
-
 
 class Post extends React.Component{
 
@@ -61,19 +61,19 @@ class Post extends React.Component{
     }
 
     render(){
-        const { title, postID, userName, description, image, emoji, reactions, userID, url} = this.props.post;
+        const { createdAt, title, postID, userName, description, image, emoji, reactions, userID, url} = this.props.post;
         const { mouseInside } = this.state;
 
         return (
             <Item onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
         {/* Modal */} 
-            <PostModal modalOpen={this.state.modalOpen} closeModal={this.closeModal} deletePost={this.deletePost} />
+                <PostModal modalOpen={this.state.modalOpen} closeModal={this.closeModal} deletePost={this.deletePost} />
         {/* Image */}     
-            <a href={url} target='none'>
-            <Item.Image verticalAlign='middle' floated='left' size='small' src={image ? image : 'images/froglook.png'}
-            style={{marginRight:'10px',marginTop:'10px'}}
-            />  
-            </a>
+                <a href={url} target='none'>
+                    <Item.Image verticalAlign='middle' floated='left' size='small' src={image ? image : 'images/froglook.png'}
+                    style={{marginRight:'10px',marginTop:'10px'}}
+                    />  
+                </a>
         {/* Main Content */}             
                 <Item.Content>   
                     <Item.Header as='h2'>{userName}</Item.Header>                    
@@ -81,8 +81,12 @@ class Post extends React.Component{
                         {emoji && emoji.map((emoji, index)=> (
                             <span key={index}>{emoji}</span>
                         ))}
+
                     </span>
                     {userID === this.props.userID && mouseInside && <Button icon='x' circular color='red inverted' size='tiny' floated='right' onClick={()=>this.openModal({postID})}/>}
+                    <span style={{float:'right', paddingTop:'10px', fontSize:'11px', color: '#888888'}}>
+                        {moment(createdAt).fromNow()}
+                    </span>
                     <a href={url} target='none'>
                         <Item.Description as='h3' style={{fontWeight:500}} floated='right'>{title}</Item.Description>
                     </a>

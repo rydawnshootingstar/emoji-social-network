@@ -59,7 +59,7 @@ class Register extends React.Component {
             .createUserWithEmailAndPassword(this.state.email, this.state.password)
             .then((user)=> {
                 //firebase has a parameter called displayName that isn't filled in when we call createUserWithEmailAndPassword
-                //we can set that here, as well as grab a unique default avatar for them and set it as their photoURL
+                //we can set that here, as well as grab a unique default avatar for them and set it as their photoURL (useless for now)
                 user.user.updateProfile({
                     displayName : this.state.username,
                     photoURL: `http://gravatar.com/avatar/${md5(user.user.email)}?d=identicon`
@@ -93,11 +93,13 @@ class Register extends React.Component {
             verticalAlign="middle"
             className="app"
             >
+        {/* Header */}    
             <Grid.Column style={{maxWidth: '450px', marginTop:'5%'}}>
                 <Header as="h1" icon color="blue" textAlign="center">
-                 <p style={{fontSize: '100px'}}>🧟</p>
-                Register for React!!!
+                 <p style={{fontSize: '100px'}}>😂</p>
+                Register
                 </Header>
+        {/* Main Form */}           
                 <Form onSubmit={this.handleSubmit} size="large">
                     <Segment stacked>
                         <Form.Input fluid name="username" 
@@ -145,14 +147,12 @@ class Register extends React.Component {
                         >Submit</Button>
                     </Segment>
                 </Form>
+        {/* Errors */}           
                 {
                     errors && errors.map((err,index)=> <Message  className='error' key={index}><h3>Error:</h3> {err}</Message>)
                 }
-
                 <Message>Already registered? <Link to="/login">Login</Link></Message>
-
             </Grid.Column>
-            
             </Grid>
         )
     }

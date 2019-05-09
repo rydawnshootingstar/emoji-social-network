@@ -14,7 +14,8 @@ import {setUrlValue, clearUrlValue} from '../actions/index';
     - userName, userID, url are mapped to props from store
 */
 
-const webURL = 'https://emoji-social-network.herokuapp.com/login';
+const webURL = 'https://emoji-social-network.herokuapp.com';
+//const webURL = 'http://localhost:8080';
 //const PORT =  '8080';
 
 
