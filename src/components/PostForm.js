@@ -14,8 +14,8 @@ import {setUrlValue, clearUrlValue} from '../actions/index';
     - userName, userID, url are mapped to props from store
 */
 
-const webURL = 'localhost';
-const PORT =  '8080';
+const webURL = 'https://emoji-social-network.herokuapp.com/login';
+//const PORT =  '8080';
 
 
 class PostForm extends React.Component{
@@ -41,7 +41,7 @@ class PostForm extends React.Component{
         const { url, userName, userID } = this.props;
         if(emoji.length>=1 && url && userName && userID && submittable){
             this.setState({submittable:false});
-            Axios.post(`http://${webURL}:${PORT}/post/submit`, {emoji, url, userName, userID} ).then(()=> {
+            Axios.post(`${webURL}/post/submit`, {emoji, url, userName, userID} ).then(()=> {
                 this.handleClear();
             }).catch((e)=> console.error(e));
         }

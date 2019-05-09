@@ -12,8 +12,10 @@ import firebase from '../firebase/firebase';
     - closing procedure: postID comes from props -> to state when 'x' is clicked -> to deletePost
 */
 
-const webURL = 'localhost';
-const PORT = '8080';
+const webURL = 'https://emoji-social-network.herokuapp.com';
+//const PORT = '8080';
+
+
 
 class Post extends React.Component{
 
@@ -30,7 +32,7 @@ class Post extends React.Component{
     handlePickEmoji = (e)=> {
         const { postID } = this.props.post;
         const { userID, userName } = this.props;
-        Axios.post(`http://${webURL}:${PORT}/post/react`, {postID, userName, userID, emoji: e.native}).then(()=> {
+        Axios.post(`${webURL}/post/react`, {postID, userName, userID, emoji: e.native}).then(()=> {
         });
     }
 
