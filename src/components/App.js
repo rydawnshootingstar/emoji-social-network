@@ -37,10 +37,11 @@ class App extends React.Component{
                     as='h1' 
                     style={{
                     marginTop: '3%',
-                    marginBottom: '60px'
+                    marginBottom: '60px',
+                    fontSize:'60px'
                     }}
                 >
-                    REACT!!!
+                    😱
                     <br />
                 {/* Nav Bar */}
                     <BreadCrumbNav />
