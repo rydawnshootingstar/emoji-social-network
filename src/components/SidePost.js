@@ -42,11 +42,11 @@ class SidePost extends React.Component{
     render(){
         const { title, image, url } = this.props
         return (
-            <Card centered>
+            <Card centered style={{minWidth: '200px'}}>
                 <a href={url} target='none'>
                     <Card.Content>
                         <Image style={{marginLeft:'5px'}} size='tiny' floated='left' verticalAlign='middle' src={image} />
-                        <Card.Header floated='right' style={{verticalAlign:'middle', fontWeight:300}} textAlign='center' as='h5'>{title}</Card.Header>
+                        <Card.Header floated='right' style={{verticalAlign:'middle', fontWeight:330}} textAlign='center' as='h5'>{title}</Card.Header>
                     </Card.Content>
                     {/*   <Card.Content textAlign='left'>{description}</Card.Content>   */}
                 </a>

@@ -31,22 +31,19 @@ class Post extends React.Component{
         }
     }
 
+    //Check incoming post's description
     componentDidMount(){
         this.checkDescription();
     }
 
-    /*
-        - this needs to be DidUpdate rather than DidMount because of the way the firebase data was being loaded by 
-            MainFeed. 
-        - NOTE: componentDidUpdate does not run on the initial render, so the first post will need the DidMount
-    */
-
+    //If incoming post's description changes, check it again
     componentDidUpdate(prevProps){
         if(this.props.post !== prevProps.post){
             this.checkDescription();
         }
     }
 
+    //pick off description from props, put it into state 
     checkDescription = ()=> {
         const { description } = this.props.post;
         if(description.length >= 100){
