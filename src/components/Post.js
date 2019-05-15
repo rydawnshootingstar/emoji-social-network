@@ -31,18 +31,32 @@ class Post extends React.Component{
         }
     }
 
+    componentDidMount(){
+        this.checkDescription();
+    }
+
+    /*
+        - this needs to be DidUpdate rather than DidMount because of the way the firebase data was being loaded by 
+            MainFeed. 
+        - NOTE: componentDidUpdate does not run on the initial render, so the first post will need the DidMount
+    */
+
     componentDidUpdate(prevProps){
         if(this.props.post !== prevProps.post){
-            const { description } = this.props.post;
-            if(description.length >= 100){
-                const splitAt = index => x => [x.slice(0, index), x.slice(index)] //splits string into 2 substrings at index
-                const shortDescription = splitAt(100)(description)[0];
-                const overFlowText = splitAt(100)(description)[1];
-                
-                this.setState({description: shortDescription, overFlowText});
-            }else{
-                this.setState({description, overFlowText:''});
-            }
+            this.checkDescription();
+        }
+    }
+
+    checkDescription = ()=> {
+        const { description } = this.props.post;
+        if(description.length >= 100){
+            const splitAt = index => x => [x.slice(0, index), x.slice(index)] //splits string into 2 substrings at index
+            const shortDescription = splitAt(100)(description)[0];
+            const overFlowText = splitAt(100)(description)[1];
+            
+            this.setState({description: shortDescription, overFlowText});
+        }else{
+            this.setState({description, overFlowText:''});
         }
     }
 
