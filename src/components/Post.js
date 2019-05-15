@@ -9,6 +9,7 @@ import moment from 'moment';
 
 /*
     - this.props.post holds all post information
+    - whenever component updates, determine whether or not to split up description into 2 parts based on length
     - userID, userName (of logged in user) are mapped to props from store
     - closing procedure: postID comes from props -> to state when 'x' is clicked -> to deletePost
 */
@@ -21,12 +22,28 @@ class Post extends React.Component{
 
     constructor(props){
         super(props);
+        this.state = {
+            mouseInside: false,
+            modalOpen: false,
+            modalPostID: '',
+            description: '',
+            overFlowText: ''
+        }
     }
 
-    state={
-        mouseInside: false,
-        modalOpen: false,
-        modalPostID: ''
+    componentDidUpdate(prevProps){
+        if(this.props.post !== prevProps.post){
+            const { description } = this.props.post;
+            if(description.length >= 100){
+                const splitAt = index => x => [x.slice(0, index), x.slice(index)] //splits string into 2 substrings at index
+                const shortDescription = splitAt(100)(description)[0];
+                const overFlowText = splitAt(100)(description)[1];
+                
+                this.setState({description: shortDescription, overFlowText});
+            }else{
+                this.setState({description, overFlowText:''});
+            }
+        }
     }
 
     handlePickEmoji = (e)=> {
@@ -60,9 +77,18 @@ class Post extends React.Component{
         this.setState({mouseInside:false});
     }
 
+    expandDescription = ()=> {
+        const {description, overFlowText} = this.state;
+        const newDescription = description.concat(overFlowText);
+        this.setState({
+            description: newDescription, overFlowText:''
+        });
+    }
+
     render(){
-        const { createdAt, title, postID, userName, description, image, emoji, reactions, userID, url} = this.props.post;
-        const { mouseInside } = this.state;
+        const { createdAt, title, postID, userName,image, emoji, reactions, userID, url} = this.props.post;
+        const { mouseInside, description, overFlowText } = this.state;
+        console.log('description at render is', description);
 
         return (
             <Item onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>
@@ -90,7 +116,7 @@ class Post extends React.Component{
                     <a href={url} target='none'>
                         <Item.Description as='h3' style={{fontWeight:500}} floated='right'>{title}</Item.Description>
                     </a>
-                    <Item.Description floated='right'>{description}</Item.Description>
+                    <Item.Description floated='right'>{description}{' '}{overFlowText && <a onClick={this.expandDescription}>Show More...</a>}</Item.Description>
         {/* Reaction Button */}
                     <Item.Extra>
                         {userID !== this.props.userID &&

@@ -82,7 +82,7 @@ class App extends React.Component{
                         <Grid.Column width={2} />
                 {/* Sidebar */}
                         <Grid.Column width={4}>
-                            <Header as='h2'>Around the Web</Header>
+                            <Header textAlign='center' as='h2'>Around the Web</Header>
                             <Sidebar />
                         </Grid.Column>
                     </Grid.Row>

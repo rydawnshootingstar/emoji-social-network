@@ -73,6 +73,7 @@ class MainFeed extends React.Component{
 
     render(){
         const { posts } = this.state;
+        
         return(
             <div>
                 <Item.Group divided>
