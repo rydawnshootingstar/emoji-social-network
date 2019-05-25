@@ -23,7 +23,7 @@ class Sidebar extends React.Component{
     //on load, grab rss feed with perser, fill up an array, extract image data from each item, add to state
     //rss parser puts the "description" into "content" object
     componentDidMount(){
-        setTimeout(this.parseFeed(), 100);
+        this.parseFeed();
     }
 
     //clips the trailing " I had to include because of the regex nonsense.    
