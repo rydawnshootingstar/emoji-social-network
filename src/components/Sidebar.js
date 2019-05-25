@@ -23,16 +23,21 @@ class Sidebar extends React.Component{
     //on load, grab rss feed with perser, fill up an array, extract image data from each item, add to state
     //rss parser puts the "description" into "content" object
     componentDidMount(){
-        this.parseFeed();
+        setTimeout(this.parseFeed(), 100);
     }
 
-    //clips the trailing " I had to include because of the regex nonsense.     
+    //clips the trailing " I had to include because of the regex nonsense.    
+    //sometimes the feed would return null for images, so check if it exists first
     parseFeed = ()=> {
         parser.parseURL(CORS_PROXY + this.state.feedURL, (err, feed)=> {
             let items = [];
+            let image = '';
             feed.items.forEach((entry)=> {
-                let image = entry.content.match(/https:(.*)\.[a-z]{3}"/)[0];
-                image = image.slice(0, image.lastIndexOf('"'));
+                    let images = entry.content.match(/https:(.*)\.[a-z]{3}"/);
+                    if(images && images.length >=2){
+                        image = images[0];
+                        image = image.slice(0, image.lastIndexOf('"'));
+                    }
                 entry.image = image;
                 items.push(entry);    
             });

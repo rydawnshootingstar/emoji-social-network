@@ -65,12 +65,10 @@ class Post extends React.Component{
     }
 
     openModal = ({postID})=> {
-        console.log('modal should be open');
         this.setState({modalOpen:true, modalPostID: postID });
     }
 
     closeModal = ()=> {
-        console.log('modal should close');
         this.setState({modalOpen: false, modalPostID:''});
     }
 
@@ -99,7 +97,6 @@ class Post extends React.Component{
     render(){
         const { createdAt, title, postID, userName,image, emoji, reactions, userID, url} = this.props.post;
         const { mouseInside, description, overFlowText } = this.state;
-        console.log('description at render is', description);
 
         return (
             <Item onMouseEnter={this.mouseEnter} onMouseLeave={this.mouseLeave}>

@@ -29,14 +29,14 @@ const BreadCrumbNav = ()=> (
 class App extends React.Component{
     render(){
         return(
-            <div>
+            <div /*style={{background: '-webkit-linear-gradient(100deg, #a9baf9, #ffcf2a)',
+                background: 'linear-gradient(-10deg, #a9baf9, #ffcf2a)'}}*/>  
                 {/* Page Header */}
-                
+                <br />
                 <Header 
                     textAlign="center" 
                     as='h1' 
                     style={{
-                    marginTop: '3%',
                     marginBottom: '60px',
                     fontSize:'60px'
                     }}
