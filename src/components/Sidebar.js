@@ -16,7 +16,7 @@ const CORS_PROXY = "https://cors-anywhere.herokuapp.com/";
 class Sidebar extends React.Component{
 
     state = {
-        feedURL: 'https://www.clickhole.com/rss',
+        feedURL: 'https://www.clickhole.com/tag/capn-crunch/rss',
         items: []
     }
 
